@@ -393,6 +393,76 @@
             transform: scale(1.05);
         }
 
+        /* Main square highlighted cells */
+        .cell.highlighted {
+            color: #fff;
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.08);
+            z-index: 10;
+        }
+
+        .cell.gradient-1 {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        }
+
+        .cell.gradient-2 {
+            background: linear-gradient(135deg, #4ecdc4, #44a89f);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+        }
+
+        .cell.gradient-3 {
+            background: linear-gradient(135deg, #a855f7, #9333ea);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .cell.gradient-4 {
+            background: linear-gradient(135deg, #f472b6, #ec4899);
+            box-shadow: 0 0 20px rgba(244, 114, 182, 0.5);
+        }
+
+        .cell.dual-color-1 {
+            background: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .cell.dual-color-2 {
+            background: #f97316;
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+        }
+
+        .cell.corner-color {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+        }
+
+        .cell.center-color {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+        }
+
+        .cell.quadrant-1 {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+        }
+
+        .cell.quadrant-2 {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+        }
+
+        .cell.quadrant-3 {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .cell.quadrant-4 {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+        }
+
         .cell.row-1 {
             animation-delay: calc(var(--col) * 0.05s);
         }
@@ -453,6 +523,233 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* ============================================ */
+        /* COMBINATION NAVIGATOR STYLES */
+        /* ============================================ */
+
+        .combo-navigator {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .combo-navigator.visible {
+            display: flex;
+        }
+
+        .nav-arrow {
+            font-size: 2rem;
+            font-weight: 300;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--glass-border);
+            border-radius: 50%;
+            color: var(--neon-cyan);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(0, 245, 255, 0.1);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .nav-arrow:active {
+            transform: scale(0.95);
+        }
+
+        .combo-info {
+            text-align: center;
+            min-width: 280px;
+        }
+
+        .combo-counter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--neon-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .combo-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--neon-cyan);
+            margin-bottom: 0.25rem;
+        }
+
+        .combo-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .combo-sums {
+            display: none;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 1rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .combo-sums.visible {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .combo-sum-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .combo-sum-badge .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .combo-sum-badge.gradient-1 {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.4);
+        }
+
+        .combo-sum-badge.gradient-1 .color-dot {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+        }
+
+        .combo-sum-badge.gradient-2 {
+            background: rgba(78, 205, 196, 0.2);
+            color: #4ecdc4;
+            border: 1px solid rgba(78, 205, 196, 0.4);
+        }
+
+        .combo-sum-badge.gradient-2 .color-dot {
+            background: linear-gradient(135deg, #4ecdc4, #44a89f);
+        }
+
+        .combo-sum-badge.gradient-3 {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+        }
+
+        .combo-sum-badge.gradient-3 .color-dot {
+            background: linear-gradient(135deg, #a855f7, #9333ea);
+        }
+
+        .combo-sum-badge.gradient-4 {
+            background: rgba(244, 114, 182, 0.2);
+            color: #f472b6;
+            border: 1px solid rgba(244, 114, 182, 0.4);
+        }
+
+        .combo-sum-badge.gradient-4 .color-dot {
+            background: linear-gradient(135deg, #f472b6, #ec4899);
+        }
+
+        .combo-sum-badge.dual-color-1 {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+        }
+
+        .combo-sum-badge.dual-color-1 .color-dot {
+            background: #3b82f6;
+        }
+
+        .combo-sum-badge.dual-color-2 {
+            background: rgba(249, 115, 22, 0.2);
+            color: #f97316;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+        }
+
+        .combo-sum-badge.dual-color-2 .color-dot {
+            background: #f97316;
+        }
+
+        .combo-sum-badge.corner-color,
+        .combo-sum-badge.center-color {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+        }
+
+        .combo-sum-badge.corner-color .color-dot,
+        .combo-sum-badge.center-color .color-dot {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .combo-sum-badge.quadrant-1 {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        .combo-sum-badge.quadrant-1 .color-dot {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .combo-sum-badge.quadrant-2 {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .combo-sum-badge.quadrant-2 .color-dot {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .combo-sum-badge.quadrant-3 {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+        }
+
+        .combo-sum-badge.quadrant-3 .color-dot {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .combo-sum-badge.quadrant-4 {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+
+        .combo-sum-badge.quadrant-4 .color-dot {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
         }
 
         /* ============================================ */
@@ -830,6 +1127,20 @@
             <div class="glass-panel magic-square-container">
                 <div class="magic-square" id="magicSquare"></div>
             </div>
+
+            <!-- Combination Navigator -->
+            <div id="comboNavigator" class="combo-navigator">
+                <button id="prevCombo" class="nav-arrow" title="Previous (←)">‹</button>
+                <div class="combo-info">
+                    <div class="combo-counter"><span id="comboIndex">0</span> / 9</div>
+                    <div class="combo-title" id="comboTitle">Press → to explore combinations</div>
+                    <div class="combo-hint">Use ← → arrow keys to navigate</div>
+                </div>
+                <button id="nextCombo" class="nav-arrow" title="Next (→)">›</button>
+            </div>
+
+            <!-- Sum Display for Current Combination -->
+            <div id="comboSums" class="combo-sums"></div>
         </section>
 
         <!-- Combinations Showcase Section -->
@@ -971,21 +1282,27 @@
                 ]
             },
             {
-                id: 'corners',
-                title: '4. Four Corners',
-                description: 'Corner cells of the square',
-                type: 'single',
+                id: 'edges',
+                title: '4. Edge Pairs',
+                description: 'Opposite edge combinations',
+                type: 'dual',
                 groups: [
-                    { positions: [[0, 0], [0, 3], [3, 0], [3, 3]], color: 'corner-color', label: 'Corners' }
+                    { positions: [[0, 0], [0, 1], [3, 0], [3, 1]], color: 'dual-color-1', label: 'Pair A' },
+                    { positions: [[1, 2], [1, 3], [2, 2], [2, 3]], color: 'dual-color-2', label: 'Pair B' },
+                    { positions: [[1, 0], [1, 1], [2, 0], [2, 1]], color: 'quadrant-1', label: 'Bottom-Left' },
+                    { positions: [[3, 2], [3, 3], [0, 2], [0, 3]], color: 'quadrant-2', label: 'Bottom-Right' }
                 ]
             },
             {
-                id: 'center',
-                title: '5. Center 2×2',
-                description: 'Inner 4 cells',
-                type: 'single',
+                id: 'quadrants',
+                title: '5. Four Quadrants',
+                description: 'Each 2×2 corner quadrant',
+                type: 'gradient',
                 groups: [
-                    { positions: [[1, 1], [1, 2], [2, 1], [2, 2]], color: 'center-color', label: 'Center' }
+                    { positions: [[0, 0], [0, 1], [1, 0], [1, 1]], color: 'quadrant-1', label: 'Top-Left' },
+                    { positions: [[0, 2], [0, 3], [1, 2], [1, 3]], color: 'quadrant-2', label: 'Top-Right' },
+                    { positions: [[2, 0], [2, 1], [3, 0], [3, 1]], color: 'quadrant-3', label: 'Bottom-Left' },
+                    { positions: [[2, 2], [2, 3], [3, 2], [3, 3]], color: 'quadrant-4', label: 'Bottom-Right' }
                 ]
             },
             {
@@ -999,27 +1316,21 @@
                 ]
             },
             {
-                id: 'edges',
-                title: '7. Edge Pairs',
-                description: 'Opposite edge combinations',
-                type: 'dual',
+                id: 'corners',
+                title: '7. Four Corners',
+                description: 'Corner cells of the square',
+                type: 'single',
                 groups: [
-                    { positions: [[0, 0], [0, 1], [3, 0], [3, 1]], color: 'dual-color-1', label: 'Pair A' },
-                    { positions: [[1, 2], [1, 3], [2, 2], [2, 3]], color: 'dual-color-2', label: 'Pair B' },
-                    { positions: [[1, 0], [1, 1], [2, 0], [2, 1]], color: 'quadrant-1', label: 'Bottom-Left' },
-                    { positions: [[3, 2], [3, 3], [0, 2], [0, 3]], color: 'quadrant-2', label: 'Bottom-Right' }
+                    { positions: [[0, 0], [0, 3], [3, 0], [3, 3]], color: 'corner-color', label: 'Corners' }
                 ]
             },
             {
-                id: 'quadrants',
-                title: '8. Four Quadrants',
-                description: 'Each 2×2 corner quadrant',
-                type: 'gradient',
+                id: 'center',
+                title: '8. Center 2×2',
+                description: 'Inner 4 cells',
+                type: 'single',
                 groups: [
-                    { positions: [[0, 0], [0, 1], [1, 0], [1, 1]], color: 'quadrant-1', label: 'Top-Left' },
-                    { positions: [[0, 2], [0, 3], [1, 2], [1, 3]], color: 'quadrant-2', label: 'Top-Right' },
-                    { positions: [[2, 0], [2, 1], [3, 0], [3, 1]], color: 'quadrant-3', label: 'Bottom-Left' },
-                    { positions: [[2, 2], [2, 3], [3, 2], [3, 3]], color: 'quadrant-4', label: 'Bottom-Right' }
+                    { positions: [[1, 1], [1, 2], [2, 1], [2, 2]], color: 'center-color', label: 'Center' }
                 ]
             },
             {
@@ -1046,6 +1357,16 @@
                 this.magicSquare = document.getElementById('magicSquare');
                 this.magicSumDisplay = document.getElementById('magicSum');
                 this.iValueDisplay = document.getElementById('iValue');
+
+                // Combo navigator elements
+                this.comboNavigator = document.getElementById('comboNavigator');
+                this.comboIndexDisplay = document.getElementById('comboIndex');
+                this.comboTitleDisplay = document.getElementById('comboTitle');
+                this.comboSumsDisplay = document.getElementById('comboSums');
+                this.prevBtn = document.getElementById('prevCombo');
+                this.nextBtn = document.getElementById('nextCombo');
+
+                // Combinations section
                 this.combinationsSection = document.getElementById('combinationsSection');
                 this.combinationsGrid = document.getElementById('combinationsGrid');
 
@@ -1058,6 +1379,8 @@
 
                 this.currentMatrix = null;
                 this.currentMagicSum = null;
+                this.currentComboIndex = 0; // 0 = no highlight, 1-9 = combinations
+                this.cells = []; // Store cell references
 
                 this.init();
             }
@@ -1066,12 +1389,109 @@
                 this.manifestBtn.addEventListener('click', () => this.manifest());
                 this.generateStars();
 
-                // Enter key support
+                // Enter key support for inputs
                 Object.values(this.inputs).forEach(input => {
                     input.addEventListener('keypress', (e) => {
                         if (e.key === 'Enter') this.manifest();
                     });
                 });
+
+                // Arrow key navigation
+                document.addEventListener('keydown', (e) => this.handleKeyDown(e));
+
+                // Button clicks
+                this.prevBtn.addEventListener('click', () => this.navigateCombo(-1));
+                this.nextBtn.addEventListener('click', () => this.navigateCombo(1));
+            }
+
+            handleKeyDown(e) {
+                // Only respond if square is visible and not in an input
+                if (!this.currentMatrix) return;
+                if (document.activeElement.tagName === 'INPUT') return;
+
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.navigateCombo(1);
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    this.navigateCombo(-1);
+                }
+            }
+
+            navigateCombo(direction) {
+                if (!this.currentMatrix) return;
+
+                // Cycle through 0-9 (0 = no highlight, 1-9 = combinations)
+                this.currentComboIndex += direction;
+
+                if (this.currentComboIndex < 0) {
+                    this.currentComboIndex = COMBINATIONS.length;
+                } else if (this.currentComboIndex > COMBINATIONS.length) {
+                    this.currentComboIndex = 0;
+                }
+
+                this.applyHighlight();
+            }
+
+            applyHighlight() {
+                // Clear all highlights from cells
+                this.clearHighlights();
+
+                // Update UI
+                this.comboIndexDisplay.textContent = this.currentComboIndex;
+
+                if (this.currentComboIndex === 0) {
+                    // No highlight mode
+                    this.comboTitleDisplay.textContent = 'Press → to explore combinations';
+                    this.comboSumsDisplay.classList.remove('visible');
+                    this.comboSumsDisplay.innerHTML = '';
+                } else {
+                    // Apply combination highlight
+                    const combo = COMBINATIONS[this.currentComboIndex - 1];
+                    this.comboTitleDisplay.textContent = combo.title;
+
+                    // Highlight cells
+                    combo.groups.forEach(group => {
+                        group.positions.forEach(([row, col]) => {
+                            const cellIndex = row * 4 + col;
+                            if (this.cells[cellIndex]) {
+                                this.cells[cellIndex].classList.add('highlighted', group.color);
+                            }
+                        });
+                    });
+
+                    // Show sums
+                    this.renderComboSums(combo);
+                }
+            }
+
+            clearHighlights() {
+                const highlightClasses = [
+                    'highlighted', 'gradient-1', 'gradient-2', 'gradient-3', 'gradient-4',
+                    'dual-color-1', 'dual-color-2', 'corner-color', 'center-color',
+                    'quadrant-1', 'quadrant-2', 'quadrant-3', 'quadrant-4'
+                ];
+
+                this.cells.forEach(cell => {
+                    highlightClasses.forEach(cls => cell.classList.remove(cls));
+                });
+            }
+
+            renderComboSums(combo) {
+                this.comboSumsDisplay.innerHTML = '';
+
+                combo.groups.forEach(group => {
+                    const sum = group.positions.reduce((acc, [row, col]) => {
+                        return acc + this.currentMatrix[row][col];
+                    }, 0);
+
+                    const badge = document.createElement('div');
+                    badge.className = `combo-sum-badge ${group.color}`;
+                    badge.innerHTML = `<span class="color-dot"></span>${group.label}: ${sum}`;
+                    this.comboSumsDisplay.appendChild(badge);
+                });
+
+                this.comboSumsDisplay.classList.add('visible');
             }
 
             generateStars() {
@@ -1102,7 +1522,6 @@
                 this.errorMessage.textContent = message;
                 this.errorMessage.classList.add('visible');
                 this.resultSection.classList.remove('visible');
-                this.combinationsSection.classList.remove('visible');
             }
 
             hideError() {
@@ -1117,6 +1536,7 @@
             renderMatrix(matrix, magicSum, iValue) {
                 // Clear previous
                 this.magicSquare.innerHTML = '';
+                this.cells = [];
 
                 // Update info badges
                 this.magicSumDisplay.textContent = magicSum;
@@ -1130,11 +1550,17 @@
                         cell.style.setProperty('--col', colIndex);
                         cell.textContent = value;
                         this.magicSquare.appendChild(cell);
+                        this.cells.push(cell);
                     });
                 });
 
                 // Show result section
                 this.resultSection.classList.add('visible');
+
+                // Show combo navigator
+                this.comboNavigator.classList.add('visible');
+                this.currentComboIndex = 0;
+                this.applyHighlight();
             }
 
             /**
